@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 
 def get_and_save_html(url, filename):
     response = requests.get(url)
-    response.raise_for_status()  
 
     soup = BeautifulSoup(response.content, 'html.parser')
     html_content = soup.prettify() 
