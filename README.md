@@ -15,8 +15,13 @@ After perfoming **git add** command, the **git commit** message should be :
 
         git commit -m "[updated folder]/[updated file] - [task description]"
 
-Example : git commit -m "DataCollect - crawl data successfully"
+Example : git commit -m "DataCollect/data_check.ipynb - check data successfully"
 
 After that, using **git push** command to push into github repository.
 
 # Structure of Project
+| **Folder** | **Which is stored in?** |
+|---|---|
+| DataCollect | Source code used to scrape data from website |
+| DataPreprocessing | Source code used to preprocess data |
+
