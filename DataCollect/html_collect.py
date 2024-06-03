@@ -12,7 +12,7 @@ def get_and_save_html(url, filename):
 
     print(f"Successfully saved HTML content of {url} to {filename}")
 
-url = "https://batdongsan.vn/chua-toi-30trm2-hang-ngop-bank-bao-dau-tu-ha-chao-11-ty-r285164"  
+url = "https://batdongsan.vn/cua-nhua-gia-re-lap-dat-phong-ngu-va-toilet-cua-nhua-dai-loan-r285126"  
 filename = "../Data/source_file.html"
 
 get_and_save_html(url, filename)
