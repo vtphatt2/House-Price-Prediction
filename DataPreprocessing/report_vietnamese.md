@@ -32,4 +32,26 @@
 * **Mô tả lỗi:** Data trong các cột của file csv chưa sạch, cụ thể là có một vài kí tự không cần thiết, kí tự đặc biệt sẽ làm ảnh hưởng không ít tới các quá trình sau này.
 
 * **Giải pháp:** 
+    * Viết hàm `clean_string` để làm sạch chuỗi bằng cách loại bỏ các biểu tượng và kí tự không cần thiết. 
+
+    * Do có một số cột không nhất thiết phải clean_string như vậy, nên ta cần thêm hàm `clean_file_csv`: hàm này sẽ làm sạch một cột cụ thể trong file CSV dựa trên index của cột đó. Cụ thể ở đây áp dụng cho cột "Description".
+
+**Vấn đề 3:** 
+
+* **Mô tả lỗi:** Về phần này thì mình sẽ clean data một cách chi tiết hơn.
+
+* **Giải pháp:** 
+
+    * Đầu tiên loại bỏ các *bad lines* bằng phương thức `on_bad_lines = 'skip'` (Do các lines bị lỗi không nhiều).
+
+    * Sau đó thực hiện xoá các cột: "No" (Theo dõi bên dưới để biết lý do tại sao mình xoá cột này), "Title" (xoá vì nó thực sự không cần thiết). 
+
+    * Trong cột "Price" tạm thời thay thế các giá trị TT (Thoả thuận) bằng `NaN` để dễ xử lí cho các quá trình tiếp theo.
+
+    * Nhận thấy có nhiều giá trị NaN trong 1 hàng, mình thiết lập ngưỡng cho số lượng giá trị NaN tối đa cho phép trong một hàng (chọn `max_nan = 3`). Sau đó thực hiện xóa các hàng có số lượng giá trị NaN lớn hơn ngưỡng.
+
+    * 
+
+
+
 
