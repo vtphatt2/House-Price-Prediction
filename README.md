@@ -22,6 +22,7 @@ After that, using **git push** command to push into github repository.
 # Structure of Project
 | **Folder** | **Which is stored in?** |
 |---|---|
+| Data | Data used to train model |
 | DataCollect | Source code used to scrape data from website |
 | DataPreprocessing | Source code used to preprocess data |
-
+| DeepLearning | Source code is used for deep learning model |
