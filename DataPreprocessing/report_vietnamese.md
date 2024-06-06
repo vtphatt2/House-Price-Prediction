@@ -50,7 +50,12 @@
 
     * Nhận thấy có nhiều giá trị NaN trong 1 hàng, mình thiết lập ngưỡng cho số lượng giá trị NaN tối đa cho phép trong một hàng (chọn `max_nan = 3`). Sau đó thực hiện xóa các hàng có số lượng giá trị NaN lớn hơn ngưỡng.
 
-    * 
+    * Xử lí cột "Postdate": Giữ lại ngày và xoá giờ đăng để hạn chế lỗi duplicate. 
+
+    * Tiến hành xử lí lỗi duplicate cho dữ liệu.
+
+    * Tạo lại cột chỉ số cột "No" để dễ quan sát hơn, sau đó lưu dữ liệu vừa clean các bước trên vào file `clean_data.csv`
+     
 
 
 
