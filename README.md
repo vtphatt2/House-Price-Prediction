@@ -1,5 +1,5 @@
 # House-Price-Prediction
-A data science project related to predicting house price in Vietnam with real-world dataset
+A data science project related to predicting house price in Ho Chi Minh city with real-world dataset
 
 # Members
 | **Name**| **Major**| **University**|
