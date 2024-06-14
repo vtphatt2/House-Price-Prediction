@@ -25,4 +25,5 @@ After that, using **git push** command to push into github repository.
 | Data | Data used to train model |
 | DataCollect | Source code used to scrape data from website |
 | DataPreprocessing | Source code used to preprocess data |
+| Regression | Source code used to train regression models |
 | DeepLearning | Source code is used for deep learning model |
