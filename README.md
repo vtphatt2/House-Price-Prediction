@@ -28,4 +28,6 @@ After that, using **git push** command to push into github repository.
 | Regression | Source code used to train regression models |
 | RandomForest | Source code used to train random forest models |
 | DeepLearning | Source code is used for deep learning model |
+| GradientBoosting | 
+| KDE | Source code is used for visualizing data
 
