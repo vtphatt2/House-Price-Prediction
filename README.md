@@ -26,4 +26,6 @@ After that, using **git push** command to push into github repository.
 | DataCollect | Source code used to scrape data from website |
 | DataPreprocessing | Source code used to preprocess data |
 | Regression | Source code used to train regression models |
+| RandomForest | Source code used to train random forest models |
 | DeepLearning | Source code is used for deep learning model |
+
