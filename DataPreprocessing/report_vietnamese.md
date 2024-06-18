@@ -1,7 +1,4 @@
-
----
-
-# **XỬ LÝ DỮ LIỆU**
+# **TIỀN XỬ LÝ DỮ LIỆU VÀ KỸ THUẬT ĐẶC TRƯNG**
 
 ### **Các vấn đề gặp phải trong quá trình xử lý dữ liệu:**
 
@@ -28,7 +25,7 @@
 
 * **Giải pháp:** 
     * Viết hàm `clean_string` để làm sạch chuỗi bằng cách loại bỏ các biểu tượng và kí tự không cần thiết. Hàm này sẽ giữ lại các kí tự chữ (hoa và thường), số, dấu chấm, dấu phẩy, dấu |.
-    * Sử dụng hàm `clean_file_csv` để áp dụng hàm `clean_string` lên một cột cụ thể trong file CSV, ở đây là cột "Description".
+    * Sử dụng hàm `clean_file_csv` để áp dụng hàm `clean_string` lên một cột cụ thể trong file CSV, ở đây là cột 'Description'.
 
 **Vấn đề 3:** 
 
@@ -66,6 +63,18 @@
 
 * **Giải pháp:** Điều chỉnh giá trị cho hợp lý hơn. Hàm `adjust_price` được sử dụng để điều chỉnh giá trị của cột 'Price' dựa trên khu vực và giá trên mỗi mét vuông.
 
+**Vấn đề 9:** 
+
+* **Mô tả lỗi:** Cần dự đoán giá trị thiếu cho các cột Floors, Bedrooms, và WCs.
+
+* **Giải pháp:** Huấn luyện mô hình K-Nearest Neighbors (KNN) để dự đoán giá trị thiếu cho các cột này dựa trên các đặc trưng: Area, Price_per_sqm, District_encoded, và Month. Quá trình này bao gồm các bước:
+    * Chọn các đặc trưng cần thiết.
+    * Chia dữ liệu thành các tập huấn luyện và kiểm tra.
+    * Huấn luyện mô hình KNN cho từng cột Floors, Bedrooms, và WCs.
+    * Dự đoán và điền giá trị thiếu vào các cột tương ứng trong DataFrame.
+
+### **Kết quả cuối cùng:**
+
 Sau khi hoàn tất các bước xử lý dữ liệu, chúng tôi đã lưu lại DataFrame vào file CSV:
 
 - Tạo lại cột 'No' để dễ quan sát hơn.
@@ -73,4 +82,6 @@ Sau khi hoàn tất các bước xử lý dữ liệu, chúng tôi đã lưu l�
 - Kiểm tra các giá trị thiếu trong DataFrame để đảm bảo không còn lỗi.
 
 ---
+
+# **PHÂN TÍCH DỮ LIỆU KHÁM PHÁ (EDA) VÀ CHUẨN BỊ DỮ LIỆU**
 

@@ -1,74 +1,86 @@
+# **DATA PREPROCESSING AND FEATURE ENGINEERING**
 
-
-# **DATA PREPROCESSING**
-
-### **Issues encountered during data processing:**
+### **Issues Encountered During Data Processing:**
 
 **Issue 1:** 
 
-* **Error Description:** When initially crawling data from the web (raw data), I encountered an error that prevented the execution of the `pd.read_csv` command. Upon a preliminary inspection, I discovered that the error was due to extra quotation marks in the data string, which caused the data structure to be incorrect.
+* **Description:** When initially crawling data from the web (raw data), I encountered an error that prevented the execution of the `pd.read_csv` command. Upon a preliminary inspection, I discovered that the error was due to extra quotation marks in the data string, which caused the data structure to be incorrect.
 
 * **Solution:** Use the `fix_csv_quotes` function to appropriately adjust the pairs of quotation marks (" ") in the data.
 
-    * The `fix_csv_quotes` function was developed to fix the issue of extra or missing quotation marks in the CSV data. The function works by:
+    * The `fix_csv_quotes` function was developed to fix the extra quotation marks in the CSV data. The function works by:
         1. Counting the number of quotation marks in each line.
         2. Identifying cases of missing quotation marks by checking if the number of quotation marks is even.
-        3. Adding the missing quotation mark at the end of lines with an odd number of quotation marks.
+        3. Adding missing quotation marks to the end of lines with an odd number of quotation marks.
     
     * Example: 
         - Incorrect data line: "data1", "data2", "data3""
         - Corrected data line: "data1", "data2", "data3"
     
-    * After fixing all errors, the output CSV file is generated.
+    * After fixing all errors, export the corrected file as an output CSV.
 
 **Issue 2:** 
 
-* **Error Description:** The data in the columns of the CSV file is not clean; specifically, there are unnecessary characters and special characters that could significantly impact subsequent processes.
+* **Description:** The data in the CSV file columns is not clean; specifically, there are unnecessary characters and special characters that could significantly impact subsequent processes.
 
 * **Solution:** 
-    * Write a `clean_string` function to clean the string by removing unnecessary symbols and characters. This function will retain alphabetic characters (uppercase and lowercase), numbers, periods, commas, and vertical bars.
+    * Write the `clean_string` function to clean the string by removing unnecessary symbols and characters. This function retains alphabetic characters (uppercase and lowercase), numbers, periods, commas, and |.
     * Use the `clean_file_csv` function to apply the `clean_string` function to a specific column in the CSV file, in this case, the 'Description' column.
 
 **Issue 3:** 
 
-* **Error Description:** It is necessary to extract data from the 'Title' and 'Description' fields to fill in the missing data positions.
+* **Description:** Data needs to be extracted from the 'Title' and 'Description' fields to fill in missing data.
 
-* **Solution:** Use regular expressions (regex) to extract information on prices, area, number of bedrooms, and number of bathrooms from the 'Title' and 'Description' fields. Specifically, regex patterns are used to search for patterns of prices, area, number of bedrooms, and number of bathrooms in the text and extract them. This extracted information is then stored in new columns in the DataFrame.
+* **Solution:** Use regular expressions (regex) to extract information on price, area, number of bedrooms, and number of bathrooms from the 'Title' and 'Description' fields. Specifically, regex expressions are used to find patterns for price, area, number of bedrooms, and number of bathrooms in the text and extract them. This information is then stored in new columns in the DataFrame.
 
 **Issue 4:** 
 
-* **Error Description:** More detailed processing, calculations, and filling of missing values are needed.
+* **Description:** Detailed processing, calculations, and filling of missing values are needed.
 
-* **Solution:** Convert the 'Price' and 'Area' columns to numeric types and calculate the price per square meter. Fill missing values based on the average values for each district and reasonable calculation rules. Specifically, the `fill_miss_vals` function calculates missing values for the 'Price' and 'Area' columns based on the average values by district. The `price_per_sqm` function calculates the price per square meter and adds this column to the DataFrame.
+* **Solution:** Convert the 'Price' and 'Area' columns to numeric types and calculate the price per square meter. Fill missing values based on the average value of each district and reasonable calculation rules. Specifically, the `fill_miss_vals` function calculates missing values for the 'Price' and 'Area' columns based on the average values per district. The `price_per_sqm` function calculates the price per square meter and adds this column to the DataFrame.
 
 **Issue 5:** 
 
-* **Error Description:** The data contains too many duplicate rows.
+* **Description:** There are too many duplicate rows in the data.
 
-* **Solution:** Remove duplicate rows by checking the similarity of the 'Postdate' and 'Description' columns. First, completely identical rows are removed. Then, partially duplicated rows are compared based on the similarity of 'Postdate' and 'Description'. These duplicate rows are removed if they have a high similarity level.
+* **Solution:** Remove duplicate rows by checking the similarity of the 'Postdate' and 'Description' columns. Initially, fully duplicate rows are removed. Then, partially duplicate rows are compared based on the similarity of 'Postdate' and 'Description', and these duplicate rows are removed if they have a high level of similarity.
 
 **Issue 6:** 
 
-* **Error Description:** Old posts may cause inaccuracies with the current timeframe, so it was decided to delete outdated data.
+* **Description:** Old posts can cause inaccuracies with the current timeframe, so we decided to delete outdated data.
 
-* **Solution:** Delete house sale posts from the year 2022. This is done by converting the 'Postdate' column to datetime type and filtering out rows with a posting year of 2022.
+* **Solution:** Delete house sale posts from 2022. This is done by converting the 'Postdate' column to the datetime format and filtering out rows with a post date in 2022.
 
 **Issue 7:** 
 
-* **Error Description:** Some data entries are unreasonable and need to be removed.
+* **Description:** Some data entries are unreasonable and need to be removed.
 
-* **Solution:** Remove unreasonable values by checking the 'Price_per_sqm' values. Rows with 'Price_per_sqm' values outside a reasonable range are removed. Then, adjust the values to be more reasonable based on the area. The `adjust_price` function adjusts the 'Price' column values based on the area and price per square meter.
+* **Solution:** Remove unreasonable values by checking the 'Price_per_sqm' value. Rows with 'Price_per_sqm' values outside the reasonable range are removed. Then, adjust the price for more reasonable values based on the area. The `adjust_price` function adjusts the 'Price' column values based on the area and price per square meter.
 
 **Issue 8:** 
 
-* **Error Description:** House prices are not reasonable in some areas.
+* **Description:** House prices are unreasonable in some areas.
 
-* **Solution:** Adjust the values to be more reasonable. The `adjust_price` function is used to adjust the 'Price' column values based on the area and price per square meter.
+* **Solution:** Adjust the prices for more reasonable values. The `adjust_price` function adjusts the 'Price' column values based on the area and price per square meter.
 
-After completing all data processing steps, we saved the DataFrame to a CSV file:
+**Issue 9:** 
 
-- Recreate the 'No' column for better observation.
+* **Description:** Missing values need to be predicted for the Floors, Bedrooms, and WCs columns.
+
+* **Solution:** Train K-Nearest Neighbors (KNN) models to predict missing values for these columns based on the features: Area, Price per square meter, District (encoded), and Month. This process includes the following steps:
+    * Select the necessary features.
+    * Split the data into training and testing sets.
+    * Train the KNN model for each column: Floors, Bedrooms, and WCs.
+    * Predict and fill in the missing values for the corresponding columns in the DataFrame.
+
+### **Final Results:**
+
+After completing the data processing steps, we saved the DataFrame to a CSV file:
+
+- Recreate the 'No' column for easier observation.
 - Save the data to the output CSV file.
-- Check for missing values in the DataFrame to ensure there are no remaining errors.
+- Check for missing values in the DataFrame to ensure no errors remain.
 
 ---
+
+## **EXPLORATORY DATA ANALYSIS (EDA) AND DATA PREPARATION**
