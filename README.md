@@ -1,7 +1,19 @@
-# House-Price-Prediction
-A data science project related to predicting house price in Ho Chi Minh city with real-world dataset
+# **House-Price-Prediction**
 
-# Members
+## Description
+This project focuses on predicting house prices in Ho Chi Minh City using real-world data collected from [Batdongsan](https://batdongsan.vn/ban-nha/). The project covers the complete data science workflow, including data collection, preprocessing, feature engineering, modeling, and evaluation.
+
+By leveraging various machine learning techniques, this project offers valuable insights into housing price trends while showcasing expertise in data analysis and predictive modeling.
+
+
+## Project Structure
+| **Folder** | **Which is stored in?** |
+|---|---|
+| data | Data used to train model |
+| data_collection | Source code used to scrape data from website |
+| results | Stores output images and the consolidated source code. |
+
+## Contributors
 | **Name**| **Major**| **University**|
 |-|-|-|
 | Le Thanh Thuy | Data Science  | University of Science (VNUHCM) |
@@ -10,7 +22,9 @@ A data science project related to predicting house price in Ho Chi Minh city wit
 | Luong Thanh Nam| Data Science  | University of Science (VNUHCM) |
 | Vo Thinh Phat  | Computer Science | University of Science (VNUHCM) |
 
-# Git commit message rule
+
+
+## Git commit message rule
 After perfoming **git add** command, the **git commit** message should be :
 
         git commit -m "[updated folder]/[updated file] - [task description]"
@@ -19,15 +33,4 @@ Example : git commit -m "DataCollect/data_check.ipynb - check data successfully"
 
 After that, using **git push** command to push into github repository.
 
-# Structure of Project
-| **Folder** | **Which is stored in?** |
-|---|---|
-| Data | Data used to train model |
-| DataCollect | Source code used to scrape data from website |
-| DataPreprocessing | Source code used to preprocess data |
-| Regression | Source code used to train regression models |
-| RandomForest | Source code used to train random forest models |
-| DeepLearning | Source code is used for deep learning model |
-| GradientBoosting | 
-| KDE | Source code is used for visualizing data
 
