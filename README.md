@@ -9,7 +9,7 @@ By leveraging various machine learning techniques, this project offers valuable 
 ## Project Structure
 | **Folder** | **Which is stored in?** |
 |---|---|
-| data | Data used to train model |
+| dataset | Data used to train model |
 | data_collection | Source code used to scrape data from website |
 | results | Stores output images and the consolidated source code. |
 
